@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
+
+main {
+    background: linear-gradient(180deg, #20003C 0%, #37097A 22.92%, #3A2CAA 53.12%, #3A79C9 70.31%, #BBD5ED 99.48%);
+    z-index: 1;
+}
+
+main > section {
+    /* border-top: 1px solid red; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;    
+
+    
+}
+
+section > div.conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-top: 80px;
+    text-transform: uppercase;
+    font-size: 5rem;
+    text-align: center;
+    letter-spacing: 0.12em;
+    font-style: normal;
+    font-weight: 500;
+    color: #8255D5;
+}
+
+p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+div.textos {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 480px;
+    
+}
+
+.linha-curva {
+    position: relative;
+    width: 98.5vw;
+    top: 80px;
+}
+
+.aviao {
+    width: 100px;
+    position: fixed;
+    right: 27%;
+    transform: translate(-50%, -12%);
+    z-index: 100;
+}
+
+/* div.textos p:nth-child(3) {
+    text-align: right;
+} */
+
+section.intro .conteudo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+}
+
+
+.camada h2 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 0.12em;
+    font-style: normal;
+    font-weight: 500;
+    color: #8255D5;
+}
+
+.camada h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
+.camada p {
+    padding-top: 30px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin-right: 300px;
+}
+
+img.terra {
+    max-width: 98vw;
+    margin-top: auto;
+}
+
+
+
+
+/* EFEITO DE LUZES NO FUNDO */ 
+
+.lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    margin: auto;
+    width: 90vw;
+    z-index: 0;
+    pointer-events: none;
+}
+    
+.line {
+    position: fixed;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    /* background: rgba(255, 255, 255, 0.1); */
+    overflow: hidden;
+}
+.line::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff75 75%, #ffffff8c 100%);
+    -webkit-animation: drop 7s 0s infinite;
+            animation: drop 7s 0s infinite;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+            animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+.line:nth-child(1) {
+    margin-left: -25%;
+}
+.line:nth-child(1)::after {
+    -webkit-animation-delay: 2s;
+     animation-delay: 2s;
+}
+.line:nth-child(3) {
+    margin-left: 25%;
+}
+.line:nth-child(3)::after {
+    -webkit-animation-delay: 2.5s;
+    animation-delay: 2.5s;
+}
+
+@-webkit-keyframes drop {
+    0% {
+        top: -50%;
+    }
+    100% {
+        top: 110%;
+    }
+}
+
+@keyframes drop {
+    0% {
+        top: -50%;
+    }
+    100% {
+        top: 110%;
+    }
+}
