@@ -62,19 +62,21 @@ div.textos {
     display: flex;
     flex-direction: row;
     gap: 180px;  
-    padding-left: 65px;
-    padding-right: 65px;  
+    padding-left: 30px;
+    padding-right: 30px;  
     
 }
 
 div.textos > p:nth-child(1) {
     text-align: right;
     width: 50%;
+    font-size: 1rem;
     
 }
 
 div.textos > p:nth-child(3) {
     width: 50%;
+    font-size: 1rem;
 }
 
 .linha-curva {
