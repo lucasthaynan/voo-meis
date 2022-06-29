@@ -196,28 +196,49 @@ let aviao = document.querySelector('.aviao');
 function escutaRolagem () {
     // console.log('rolando a página')
 
+    // console.log(aviao.scrollTp)
 
-    let sessoesPagina = document.querySelectorAll('section')
-    
-    for (let secao of sessoesPagina) {
+    let limite = window.pageYOffset + reportagem.getBoundingClientRect().y
 
-        // console.log(secao.classList)
+    let posicao = window.pageYOffset + (window.innerHeight / 2 )
 
-        // Para cada um deles, pegar a posição atual
-        let posicao = secao.getBoundingClientRect();
+    if (posicao > limite) {
+        console.log('esconder')
 
-
-        // Verificar se o gatilho está acima do topo da página
-        if(posicao.top >= 1.500){
-            // se sim, adiciona a classe que exibe o gráfico
-            console.log('opa')
-            console.log(secao.id)
-            // passo.classList.add('passo-ativo');
-        }else{
-
-            console.log('deu erro')
-        }
+    } else {
+        console.log('mostra')
     }
+
+    // console.log(limite)
+// 
+    // console.log(reportagem.getBoundingClientRect().y)
+
+    // console.log(window.pageYOffset)
+
+    // let sessoesPagina = document.querySelectorAll('section')
+    
+    // for (let secao of sessoesPagina) {
+
+    //     console.log(secao)
+
+    //     // console.log(secao.classList)
+
+    // //     // Para cada um deles, pegar a posição atual
+    // //     let posicao = secao.getBoundingClientRect();
+
+
+    // //     // Verificar se o gatilho está acima do topo da página
+    // //     if(posicao.top >= 1.500){
+            
+    // //         // se sim, adiciona a classe que exibe o gráfico
+    // //         // console.log('opa')
+    // //         // console.log(secao.id)
+    // //         // passo.classList.add('passo-ativo');
+    // //     }else{
+
+    // //         // console.log('deu erro')
+    // //     }
+    // }
 
    
 }
