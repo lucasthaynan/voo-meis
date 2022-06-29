@@ -13,13 +13,13 @@ function converteNumero (numero) {
 }
 
 
-let nomeMunicipio
-let categoriaMunicipio
-let arrayMunicipio = []
+// let nomeMunicipio
+// let categoriaMunicipio
+// let arrayMunicipio = []
+// let textoMunicipioPopUp 
 
-
-// carregando os dados json dos municipios
-function carregandoDadosJson () {
+// carregando os dados json dos municipios para cada um dos mapas
+function carregandoDadosMapas () {
     fetch('dados_meis.json')
     .then(response => response.json())
     .then(data => {
@@ -29,13 +29,19 @@ function carregandoDadosJson () {
 
             // console.log(municipio)
 
-            arrayMunicipio = [
-                converteNumero(municipio['2018']), 
-                converteNumero(municipio['2019']), 
-                converteNumero(municipio['2020']), 
-                converteNumero(municipio['2021']), 
-            ]
-            // console.log('array: ', arrayMunicipio)
+            // arrayMunicipio = [
+            //     converteNumero(municipio['2018']), 
+            //     converteNumero(municipio['2019']), 
+            //     converteNumero(municipio['2020']), 
+            //     converteNumero(municipio['2021']), 
+            // ]
+            // // console.log('array: ', arrayMunicipio)
+
+            // textoMunicipioPopUp = 'Entre 2018 e 2021, o município teve ' + municipio['2018/2021'] + ' de crescimento, saindo de ' + municipio['2018'] + ' para ' + municipio['2021'] + ' MEIs registrados no final de 2021.'
+
+            
+
+            // console.log(textoMunicipioPopUp)
 
             nomeMunicipio = municipio['Município']
             categoriaMunicipio = municipio['categoria']
@@ -49,6 +55,86 @@ function carregandoDadosJson () {
             gerandoMapa('exosfera', nomeMunicipio, categoriaMunicipio)
             gerandoMapa('mesosfera', nomeMunicipio, categoriaMunicipio)
             gerandoMapa('troposfera', nomeMunicipio, categoriaMunicipio)
+
+        }        
+
+    })    
+
+}
+
+carregandoDadosMapas()
+
+
+let mapaAlagoas = document.querySelectorAll('#mapa-'+ 'exosfera' + ' > path')
+
+mapaAlagoas.forEach(municipio => {
+    municipio.addEventListener('click', e => {
+        aparecerPopUp()
+
+        let nomeDoMunicipioClicado = municipio.querySelector('title').innerHTML
+        console.log(nomeDoMunicipioClicado)
+        console.log(municipio.querySelector('title'))
+        // gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
+        // console.log(nomeMunMapa)
+        // // console.log(textoMunicipioPopUp)
+        
+        // document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
+        // document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
+
+        // graficoChartJs(nomeMunMapa, arrayMunicipio)
+    })
+})
+        
+        
+        
+        // municipio.addEventListener('click', e => {
+        //     aparecerPopUp()
+        //     gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
+        //     console.log(nomeMunMapa)
+        //     // console.log(textoMunicipioPopUp)
+            
+        //     document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
+        //     document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
+
+        //     graficoChartJs(nomeMunMapa, arrayMunicipio)
+        // })
+
+
+
+function pegandoDadosMunicipio (nomeDoMunicipio) {
+    fetch('dados_meis.json')
+    .then(response => response.json())
+    .then(data => {
+
+        // para cada municipio fazer tais ações
+        for (let municipio of data) {
+
+            if (municipio['Município'] == nomeDoMunicipio) {
+                let arrayMunicipio = [
+                    converteNumero(municipio['2018']), 
+                    converteNumero(municipio['2019']), 
+                    converteNumero(municipio['2020']), 
+                    converteNumero(municipio['2021']), 
+                ]
+                let textoMunicipioPopUp = 'Entre 2018 e 2021, o município teve ' + municipio['2018/2021'] + ' de crescimento, saindo de ' + municipio['2018'] + ' para ' + municipio['2021'] + ' MEIs registrados no final de 2021.' 
+
+            }
+           
+
+            // console.log(textoMunicipioPopUp)
+
+            let nomeMunicipio = municipio['Município']
+            let categoriaMunicipio = municipio['categoria']
+
+
+            // console.log(municipio);
+
+            // console.log(nomeMunicipio)
+
+            // executando uma função para cada mapa
+            gerandoMapa('exosfera', nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
+            gerandoMapa('mesosfera', nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
+            gerandoMapa('troposfera', nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
 
         }        
 
@@ -73,7 +159,32 @@ function carregandoDadosJson () {
 
 
 // DESATIVADO TEMPORAREAMENTE
-carregandoDadosJson()
+// carregandoDadosJson()
+
+
+function gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp) {
+    console.log(camada)
+    console.log(nomeMunicipio)
+    console.log(categoriaMunicipio)
+    console.log(textoMunicipioPopUp)
+    
+}
+
+
+
+
+    // municipio.addEventListener('click', e => {
+    //     aparecerPopUp()
+    //     console.log(nomeMunMapa)
+    //     // console.log(textoMunicipioPopUp)
+        
+    //     document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
+    //     document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
+
+    //     graficoChartJs(nomeMunMapa, arrayMunicipio)
+    // })
+
+
 
 
 // variável do nível da camada/categoria: 'alta', 'regular' ou 'baixa'
@@ -122,21 +233,22 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
 
             // console.log('match!', conteudoMuninicipio.innerHTML, nomeMunicipio)
 
-        } else {
-
-            // console.log('ops')
-
         }
 
         
+        
+        
         municipio.addEventListener('click', e => {
             aparecerPopUp()
+            gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
             console.log(nomeMunMapa)
-            graficoChartJs(nomeMunMapa, arrayMunicipio)
-            document.querySelector('.texto-municipio').innerHTML = nomeMunMapa
-        })
-        
+            // console.log(textoMunicipioPopUp)
+            
+            document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
+            document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
 
+            graficoChartJs(nomeMunMapa, arrayMunicipio)
+        })
 
         // console.log(conteudoMuninicipio.innerHTML, '-', idMunicipio)
     }

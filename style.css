@@ -43,7 +43,7 @@ section > div.conteudo {
 h1 {
     margin-top: 80px;
     text-transform: uppercase;
-    font-size: 5rem;
+    font-size: 6rem;
     text-align: center;
     letter-spacing: 0.12em;
     font-style: normal;
@@ -61,12 +61,20 @@ div.textos {
     padding-top: 50px;
     display: flex;
     flex-direction: row;
-    gap: 180px;    
+    gap: 180px;  
+    padding-left: 65px;
+    padding-right: 65px;  
     
 }
 
 div.textos > p:nth-child(1) {
     text-align: right;
+    width: 50%;
+    
+}
+
+div.textos > p:nth-child(3) {
+    width: 50%;
 }
 
 .linha-curva {
@@ -106,7 +114,8 @@ section.intro .conteudo {
 .camada h3 {
     font-style: normal;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+    padding-bottom: 20px;
 }
 
 .camada p {
@@ -116,6 +125,7 @@ section.intro .conteudo {
     font-size: 1.1rem;
     margin-left: 650px;
 }
+
 
 img.terra {
     max-width: 98vw;
@@ -144,7 +154,7 @@ div.mapa-alagoas path {
 div.mapa-alagoas path.desativado {
     fill: rgb(98 93 245 / 29%);
     stroke: rgb(98 93 245 / 29%);
-
+    pointer-events: none;
 }
 
 
@@ -168,16 +178,21 @@ div.mapa-alagoas #mapa-troposfera path.desativado {
     cursor: unset;
 }
 
+div.mapa-alagoas #mapa-exosfera path.desativado:hover {
+    fill: rgb(98 93 245 / 29%);
+    
+}
+
 div.mapa-alagoas #mapa-exosfera path:hover {
-    fill: rgb(98 93 245 / 29%);      
+    fill: #361986;      
 }
 
 div.mapa-alagoas #mapa-mesosfera path:hover {
-    fill: rgb(98 93 245 / 29%);      
+    fill: #361986;      
 }
 
 div.mapa-alagoas #mapa-troposfera path:hover {
-    fill: rgb(93 169 245 / 29%);      
+    fill: #1c5baf;      
 }
 
 div.mapa-alagoas path.desativado:hover {
@@ -250,10 +265,17 @@ p#fechar-pop-up {
     cursor: pointer;
     
 }
+p.nome-municipio {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-bottom: 20px;
+}
 
 p.texto-municipio {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1rem;
+    padding: 0 45px;
 }
 
 /*  */
