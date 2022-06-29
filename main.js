@@ -13,10 +13,6 @@ function converteNumero (numero) {
 }
 
 
-// let nomeMunicipio
-// let categoriaMunicipio
-// let arrayMunicipio = []
-// let textoMunicipioPopUp 
 
 // carregando os dados json dos municipios para cada um dos mapas
 function carregandoDadosMapas () {
@@ -27,31 +23,10 @@ function carregandoDadosMapas () {
         // para cada municipio fazer tais ações
         for (let municipio of data) {
 
-            // console.log(municipio)
-
-            // arrayMunicipio = [
-            //     converteNumero(municipio['2018']), 
-            //     converteNumero(municipio['2019']), 
-            //     converteNumero(municipio['2020']), 
-            //     converteNumero(municipio['2021']), 
-            // ]
-            // // console.log('array: ', arrayMunicipio)
-
-            // textoMunicipioPopUp = 'Entre 2018 e 2021, o município teve ' + municipio['2018/2021'] + ' de crescimento, saindo de ' + municipio['2018'] + ' para ' + municipio['2021'] + ' MEIs registrados no final de 2021.'
-
-            
-
-            // console.log(textoMunicipioPopUp)
 
             nomeMunicipio = municipio['Município']
             categoriaMunicipio = municipio['categoria']
 
-
-            // console.log(municipio);
-
-            // console.log(nomeMunicipio)
-
-            // executando uma função para cada mapa
             gerandoMapa('exosfera', nomeMunicipio, categoriaMunicipio)
             gerandoMapa('mesosfera', nomeMunicipio, categoriaMunicipio)
             gerandoMapa('troposfera', nomeMunicipio, categoriaMunicipio)
@@ -65,40 +40,29 @@ function carregandoDadosMapas () {
 carregandoDadosMapas()
 
 
-let mapaAlagoas = document.querySelectorAll('#mapa-'+ 'exosfera' + ' > path')
 
-mapaAlagoas.forEach(municipio => {
-    municipio.addEventListener('click', e => {
-        aparecerPopUp()
+function ativandoPopUp (camada) {
 
-        let nomeDoMunicipioClicado = municipio.querySelector('title').innerHTML
-        console.log(nomeDoMunicipioClicado)
-        console.log(municipio.querySelector('title'))
-        // gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
-        // console.log(nomeMunMapa)
-        // // console.log(textoMunicipioPopUp)
-        
-        // document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
-        // document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
-
-        // graficoChartJs(nomeMunMapa, arrayMunicipio)
-    })
-})
-        
-        
-        
-        // municipio.addEventListener('click', e => {
-        //     aparecerPopUp()
-        //     gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
-        //     console.log(nomeMunMapa)
-        //     // console.log(textoMunicipioPopUp)
+    let mapaAlagoas = document.querySelectorAll('#mapa-'+ camada + ' > path')
+    
+    mapaAlagoas.forEach(municipio => {
+        municipio.addEventListener('click', e => {
+            aparecerPopUp()
+    
+            let nomeDoMunicipioClicado = municipio.querySelector('title').innerHTML
+    
+            pegandoDadosMunicipio(nomeDoMunicipioClicado)
+           
             
-        //     document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
-        //     document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
+        })
+    })
+}
 
-        //     graficoChartJs(nomeMunMapa, arrayMunicipio)
-        // })
-
+ativandoPopUp('exosfera')
+ativandoPopUp('mesosfera')
+ativandoPopUp('troposfera')
+        
+        
 
 
 function pegandoDadosMunicipio (nomeDoMunicipio) {
@@ -110,31 +74,29 @@ function pegandoDadosMunicipio (nomeDoMunicipio) {
         for (let municipio of data) {
 
             if (municipio['Município'] == nomeDoMunicipio) {
+
                 let arrayMunicipio = [
                     converteNumero(municipio['2018']), 
                     converteNumero(municipio['2019']), 
                     converteNumero(municipio['2020']), 
                     converteNumero(municipio['2021']), 
                 ]
+
                 let textoMunicipioPopUp = 'Entre 2018 e 2021, o município teve ' + municipio['2018/2021'] + ' de crescimento, saindo de ' + municipio['2018'] + ' para ' + municipio['2021'] + ' MEIs registrados no final de 2021.' 
 
+                console.log(arrayMunicipio)
+                console.log(textoMunicipioPopUp)
+
+                document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
+                document.querySelector('.nome-municipio').innerHTML = nomeDoMunicipio
+
+                graficoChartJs(nomeDoMunicipio, arrayMunicipio)
+
+                
+        
+
             }
-           
 
-            // console.log(textoMunicipioPopUp)
-
-            let nomeMunicipio = municipio['Município']
-            let categoriaMunicipio = municipio['categoria']
-
-
-            // console.log(municipio);
-
-            // console.log(nomeMunicipio)
-
-            // executando uma função para cada mapa
-            gerandoMapa('exosfera', nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
-            gerandoMapa('mesosfera', nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
-            gerandoMapa('troposfera', nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
 
         }        
 
@@ -142,24 +104,6 @@ function pegandoDadosMunicipio (nomeDoMunicipio) {
 
 }
 
-
-// let mapaAlagoas = document.querySelectorAll('#mapa-'+ camada + ' > path')
-
-// mapaAlagoas.forEach(municipio => {
-//     municipio.addEventListener('click', e => {
-//         console.log(municipio)
-//         // graficoChartJs(nomeMunMapa, meisRegistrados)
-//     })
-// })
-
-// municipio.addEventListener('click', e => {
-//     console.log(nomeMunMapa)
-//     graficoChartJs(nomeMunMapa, meisRegistrados)
-// })
-
-
-// DESATIVADO TEMPORAREAMENTE
-// carregandoDadosJson()
 
 
 function gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp) {
@@ -169,22 +113,6 @@ function gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipio
     console.log(textoMunicipioPopUp)
     
 }
-
-
-
-
-    // municipio.addEventListener('click', e => {
-    //     aparecerPopUp()
-    //     console.log(nomeMunMapa)
-    //     // console.log(textoMunicipioPopUp)
-        
-    //     document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
-    //     document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
-
-    //     graficoChartJs(nomeMunMapa, arrayMunicipio)
-    // })
-
-
 
 
 // variável do nível da camada/categoria: 'alta', 'regular' ou 'baixa'
@@ -205,14 +133,7 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
 
     let mapaAl = document.querySelectorAll('#mapa-'+ camada + ' > path')
 
-    // mapaAl.forEach(municipio => {
-    //     municipio.addEventListener('click', e => {
-    //         console.log(municipio.innerHTML)
-    //         // graficoChartJs(nomeMunMapa, meisRegistrados)
-    //     })
-    // })
 
-    // console.log(nomeMunicipio)
     for (let municipio of mapaAl) {
         
         let conteudoMuninicipio = municipio.querySelector('title')
@@ -231,26 +152,11 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
                 municipio.classList.add('desativado')
             }
 
-            // console.log('match!', conteudoMuninicipio.innerHTML, nomeMunicipio)
 
         }
 
         
-        
-        
-        municipio.addEventListener('click', e => {
-            aparecerPopUp()
-            gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp)
-            console.log(nomeMunMapa)
-            // console.log(textoMunicipioPopUp)
-            
-            document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
-            document.querySelector('.nome-municipio').innerHTML = nomeMunMapa
 
-            graficoChartJs(nomeMunMapa, arrayMunicipio)
-        })
-
-        // console.log(conteudoMuninicipio.innerHTML, '-', idMunicipio)
     }
 
     
