@@ -88,7 +88,7 @@ function pegandoDadosMunicipio (nomeDoMunicipio, camada) {
                 console.log(textoMunicipioPopUp)
 
                 document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
-                
+
                 document.querySelector('.nome-municipio').innerHTML = nomeDoMunicipio
 
                 document.querySelector('.camada-municipio').innerHTML = camada
@@ -197,19 +197,25 @@ function escutaRolagem () {
     // console.log('rolando a página')
 
 
-    let sessoesPagina = document.querySelectorAll('section.camada')
+    let sessoesPagina = document.querySelectorAll('section')
     
     for (let secao of sessoesPagina) {
 
-        let posicaoSecao = secao.getBoundingClientRect();
-        // console.log(posicaoSecao.top);
-        
-        // let alvo = secao.dataset.alvo
-        // console.log(alvo)
-        // console.log(posicaoSecao.top)
+        // console.log(secao.classList)
 
-        if (posicaoSecao.top <= 0) {
-            // console.log(secao.classList)
+        // Para cada um deles, pegar a posição atual
+        let posicao = secao.getBoundingClientRect();
+
+
+        // Verificar se o gatilho está acima do topo da página
+        if(posicao.top >= 1.500){
+            // se sim, adiciona a classe que exibe o gráfico
+            console.log('opa')
+            console.log(secao.id)
+            // passo.classList.add('passo-ativo');
+        }else{
+
+            console.log('deu erro')
         }
     }
 
