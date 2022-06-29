@@ -33,8 +33,11 @@ main > section {
 }
 
 section > div.conteudo {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1000px;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -57,11 +60,13 @@ p {
 div.textos {
     padding-top: 50px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    width: 480px;
+    flex-direction: row;
+    gap: 180px;    
     
+}
+
+div.textos > p:nth-child(1) {
+    text-align: right;
 }
 
 .linha-curva {
@@ -73,8 +78,8 @@ div.textos {
 .aviao {
     width: 100px;
     position: fixed;
-    right: 27%;
-    transform: translate(-50%, -12%);
+    left: 50%;
+    transform: translate(-50%, 0);
     z-index: 100;
 }
 
@@ -105,11 +110,11 @@ section.intro .conteudo {
 }
 
 .camada p {
-    padding-top: 30px;
+    margin-top: -200px;
     font-style: normal;
     font-weight: 300;
     font-size: 1.1rem;
-    margin-right: 300px;
+    margin-left: 650px;
 }
 
 img.terra {
@@ -117,6 +122,144 @@ img.terra {
     margin-top: auto;
 }
 
+
+div.mapa-alagoas {
+    width: 750px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+div.mapa-alagoas path {
+    fill: #6051D4;
+    stroke: #fff;
+    stroke-width: 1px;
+    stroke-dasharray: 2,2;
+    stroke-linejoin: round;
+    transition: all 0.1s ease-out;
+}
+
+div.mapa-alagoas path.desativado {
+    fill: rgb(98 93 245 / 29%);
+    stroke: rgb(98 93 245 / 29%);
+
+}
+
+
+div.mapa-alagoas path:hover {
+    fill: #29075c;
+    cursor: pointer;
+}
+
+div.mapa-alagoas path.desativado[disabled]:hover {    
+    cursor: pointer;
+}
+
+div.mapa-alagoas #mapa-troposfera path {
+    fill: #517fd4;
+    stroke: #fff;
+}
+
+div.mapa-alagoas #mapa-troposfera path.desativado {
+    fill: rgb(93 169 245 / 29%);
+    stroke: rgb(93 169 245 / 29%);
+    cursor: unset;
+}
+
+div.mapa-alagoas #mapa-exosfera path:hover {
+    fill: rgb(98 93 245 / 29%);      
+}
+
+div.mapa-alagoas #mapa-mesosfera path:hover {
+    fill: rgb(98 93 245 / 29%);      
+}
+
+div.mapa-alagoas #mapa-troposfera path:hover {
+    fill: rgb(93 169 245 / 29%);      
+}
+
+div.mapa-alagoas path.desativado:hover {
+    /* fill: #29075c; */
+    cursor: unset;
+}
+
+div.pop-up {
+    /* centralizar container branco na tela */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 630px;
+    height: 470px;         
+
+    box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;    
+
+    z-index: 300;
+
+    color: #FFFFFF;
+
+    padding: 30px 30px;
+
+    background-color: #391b93ee;
+    border: 2px solid #FFFFFF;
+
+    transition: all 0.5s ease-out;
+    
+    /* ocultar */
+    /* display: none; */
+}
+
+/* div.container-pop-up {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(93 169 245 / 29%);
+} */
+
+div.btn-pop-up {
+    height: 5px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+p#fechar-pop-up {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    text-align: center;
+    right: -48px;
+    top: -48px;
+    background-color: #1e0b56;
+    border: 2px solid #fff;
+    border-radius: 99px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+
+/*  */
+
+
+/* section.pop-up > div {
+    display: block;
+    position: fixed;
+    width: 900px;
+    height: 500px;
+    margin: auto;
+    background-color: #fff;
+    color: black;
+    z-index: 300;
+} */
 
 
 
