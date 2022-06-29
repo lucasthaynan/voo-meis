@@ -133,6 +133,7 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
             aparecerPopUp()
             console.log(nomeMunMapa)
             graficoChartJs(nomeMunMapa, arrayMunicipio)
+            document.querySelector('.texto-municipio').innerHTML = nomeMunMapa
         })
         
 
@@ -150,11 +151,13 @@ botaoFecharPopUp.addEventListener('click', sumirPopUp)
 
 function aparecerPopUp () {
     document.querySelector('div.pop-up').style.display = 'block'
+    document.querySelector('.container-pop-up').style.display = 'block'
     aviao.style.display = 'none'
 }
 
 function sumirPopUp () {
     document.querySelector('div.pop-up').style.display = 'none'
+    document.querySelector('.container-pop-up').style.display = 'none'
     aviao.style.display = 'block'
 }
 
