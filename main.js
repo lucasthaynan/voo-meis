@@ -8,7 +8,7 @@
 
 
 function converteNumero (numero) {
-    numeroConvertido = parseFloat(numero.replace(',','.').replace(' ',''))
+    numeroConvertido = parseFloat(numero.replace('.','').replace(' ',''))
     return numeroConvertido
 }
 
@@ -51,7 +51,7 @@ function ativandoPopUp (camada) {
     
             let nomeDoMunicipioClicado = municipio.querySelector('title').innerHTML
     
-            pegandoDadosMunicipio(nomeDoMunicipioClicado)
+            pegandoDadosMunicipio(nomeDoMunicipioClicado, camada)
            
             
         })
@@ -65,7 +65,7 @@ ativandoPopUp('troposfera')
         
 
 
-function pegandoDadosMunicipio (nomeDoMunicipio) {
+function pegandoDadosMunicipio (nomeDoMunicipio, camada) {
     fetch('dados_meis.json')
     .then(response => response.json())
     .then(data => {
@@ -88,7 +88,10 @@ function pegandoDadosMunicipio (nomeDoMunicipio) {
                 console.log(textoMunicipioPopUp)
 
                 document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
+                
                 document.querySelector('.nome-municipio').innerHTML = nomeDoMunicipio
+
+                document.querySelector('.camada-municipio').innerHTML = camada
 
                 graficoChartJs(nomeDoMunicipio, arrayMunicipio)
 
@@ -164,8 +167,12 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
 }
 
 let botaoFecharPopUp = document.querySelector('#fechar-pop-up')
-
 botaoFecharPopUp.addEventListener('click', sumirPopUp)
+
+let containterFundoPopUp = document.querySelector('.container-pop-up')
+containterFundoPopUp.addEventListener('click', sumirPopUp)
+
+
 
 function aparecerPopUp () {
     document.querySelector('div.pop-up').style.display = 'block'
@@ -275,7 +282,7 @@ function graficoChartJs(nomeMunicipio, meisRegistrados) {
             {
             // valores do eixo Y
             data: meisRegistrados,
-            borderColor: '#ffff',
+            borderColor: '#8dbef3',
             fontColor: '#fff',
             // fill: true,
             label: 'MEIs registrados em ' +  nomeMunicipio

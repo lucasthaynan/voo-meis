@@ -127,6 +127,8 @@ section.intro .conteudo {
 }
 
 
+
+
 img.terra {
     max-width: 98vw;
     margin-top: auto;
@@ -269,7 +271,22 @@ p.nome-municipio {
     text-align: center;
     font-size: 2rem;
     font-weight: 400;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+p.camada-municipio {
+    margin: 0 auto;    
+    width: 130px;
+    text-align: center;
+    background-color: #1e0b56;
+    padding: 5px 20px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
 }
 
 p.texto-municipio {
@@ -277,6 +294,8 @@ p.texto-municipio {
     font-size: 1rem;
     padding: 0 45px;
 }
+
+
 
 /*  */
 
