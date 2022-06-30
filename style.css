@@ -491,6 +491,7 @@ section#expediente > p.texto-expediente {
 
     .aviao {
         left: 10%;
+        
     }
 
     h1 {
@@ -516,7 +517,7 @@ section#expediente > p.texto-expediente {
     }
 
     .camada p {
-        margin-top: -100px;
+        margin-top: -50px;
         max-width: 570px;
         width: auto;
         margin-left: 0;
@@ -530,6 +531,11 @@ section#expediente > p.texto-expediente {
         row-gap: 60px;
     }
 
+    .camada h2 {
+        margin-top: 50px;
+        font-size: 2rem;
+    }
+
 }
 
 
@@ -539,12 +545,14 @@ section#expediente > p.texto-expediente {
     .aviao {
         left: 7%;
         width: 30px;
-
+        opacity: 0.2;
+        display: none;
     }
 
     h1 {
         font-size: 4rem;
         margin-bottom: 60px;
+        max-width: 80vw;
     }
 
     div.textos {
@@ -558,13 +566,13 @@ section#expediente > p.texto-expediente {
     div.textos > p:nth-child(1) {
         text-align: left;
         width: 70vw;
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.2rem;
     }
 
     div.textos > p:nth-child(3) {
         width: 70vw;
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.2rem;
 
     }
@@ -614,7 +622,7 @@ section#expediente > p.texto-expediente {
         
         margin-left: 0;
 
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.2rem;
         text-align: left;
         width: 70vw;
@@ -635,7 +643,7 @@ section#expediente > p.texto-expediente {
 
 
     section.texto-reportagem > p {
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.2rem;
         text-align: left;
         width: 70vw;
@@ -668,6 +676,50 @@ section#expediente > p.texto-expediente {
     .aviao {
         left: 10%;
         width: 30px;
+        opacity: 0.2;
+        display: none;
+    }
 
+    div.textos > p:nth-child(1) {
+        width: 80vw;
+    }
+
+    div.textos > p:nth-child(3) {
+        width: 80vw;
+    }
+
+    section.texto-reportagem > p {
+        width: 80vw;
+    }
+
+    div.pop-up {
+        width: 80vw;
+        height: 480px;
+    }
+
+    img.foto {
+        margin: 0 0;
+    }
+
+    p.texto-municipio {
+        padding: 0 0;
+        font-size: 0.9rem;
+    }
+
+    p.nome-municipio {
+        font-size: 1.2rem;
+    }
+
+    section.texto-reportagem > h2 {
+        font-size: 2rem;
+    }
+
+    .linha-curva {
+        width: 94vw;
+    }
+
+    .camada h3 {
+        text-align: center;
+        padding: 0 20px;
     }
 }
