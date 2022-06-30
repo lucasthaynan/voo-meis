@@ -91,6 +91,8 @@ div.textos > p:nth-child(3) {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 100;
+
+    /* transition: 0.2s; */
 }
 
 /* div.textos p:nth-child(3) {
@@ -376,6 +378,7 @@ section#expediente .infos-expediente > div {
 section#expediente .infos-expediente h3 {
     font-size: 0.9rem;
     color: #3f3a30;
+    text-align: center;
 }
 
 section#expediente > p.data {
@@ -383,10 +386,16 @@ section#expediente > p.data {
     font-size: 1rem;
 }
 
+section#expediente p {
+
+    text-align: center;
+}
+
 section#expediente > p.texto-expediente {
     margin-top: 60px;
     font-size: 2rem;
     color: #3f3a30;
+    text-align: center;
 }
 
 /*  */

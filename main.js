@@ -204,9 +204,11 @@ function escutaRolagem () {
 
     if (posicao > limite) {
         console.log('esconder')
+        aviao.style.opacity = 0.2
 
     } else {
         console.log('mostra')
+        aviao.style.opacity = 1
     }
 
     // console.log(limite)
