@@ -232,7 +232,7 @@ function detectandoRolagem(){
 detectandoRolagem();
 
 
-// cherando variáveis com os dados do Brasil
+// gerando variáveis com os dados do Brasil
 meisRegistrados = [56, 67, 87, 119]
 
 
